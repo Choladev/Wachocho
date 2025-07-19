@@ -1,0 +1,1202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CK Brands | Web Design & Mobile Repair Services</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0d47a1;
+            --secondary: #e65100;
+            --accent: #ffab00;
+            --dark: #263238;
+            --light: #f5f7fa;
+            --gray: #78909c;
+            --success: #4caf50;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--dark);
+            line-height: 1.6;
+            background-color: var(--light);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            line-height: 1.2;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            position: relative;
+            display: inline-block;
+            margin-bottom: 2.5rem;
+        }
+
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 70px;
+            height: 4px;
+            background: var(--secondary);
+            border-radius: 2px;
+        }
+
+        p {
+            margin-bottom: 1.2rem;
+            font-size: 1.1rem;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background: var(--secondary);
+            color: white;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 15px rgba(230, 81, 0, 0.3);
+        }
+
+        .btn:hover {
+            background: #c44100;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(230, 81, 0, 0.4);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--secondary);
+            color: var(--secondary);
+            box-shadow: none;
+        }
+
+        .btn-outline:hover {
+            background: var(--secondary);
+            color: white;
+        }
+
+        section {
+            padding: 5rem 0;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .text-center h2:after {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* Header Styles */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 1.5rem 0;
+            transition: all 0.4s ease;
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        header.scrolled {
+            padding: 1rem 0;
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--secondary);
+        }
+
+        .logo i {
+            margin-right: 10px;
+            color: var(--secondary);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary);
+        }
+
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--secondary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+
+        .mobile-menu {
+            display: none;
+            font-size: 1.5rem;
+            color: var(--primary);
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #0d47a1 0%, #1976d2 100%);
+            color: white;
+            padding: 10rem 0 7rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxjaXJjbGUgY3g9IjEwIiBjeT0iMTAiIHI9IjEiIGZpbGw9IiNmZmYiIGZpbGwtb3BhY2l0eT0iMC4xIi8+PC9wYXR0ZXJuPjwvZGVmcz48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI3BhdHRlcm4pIi8+PC9zdmc+');
+            opacity: 0.1;
+        }
+
+        .hero-content {
+            max-width: 700px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            color: white;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .hero .btn {
+            background: var(--accent);
+            box-shadow: 0 4px 15px rgba(255, 171, 0, 0.3);
+        }
+
+        .hero .btn:hover {
+            background: #e69500;
+        }
+
+        .hero .btn-outline {
+            border-color: white;
+            color: white;
+        }
+
+        .hero .btn-outline:hover {
+            background: white;
+            color: var(--primary);
+        }
+
+        /* Stats Section */
+        .stats {
+            background: white;
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.05);
+            margin-top: -3rem;
+            position: relative;
+            z-index: 10;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .stats-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            padding: 2rem 0;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 1rem 2rem;
+        }
+
+        .stat-item h3 {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-item p {
+            color: var(--gray);
+            font-weight: 500;
+        }
+
+        /* About Section */
+        .about {
+            background: white;
+        }
+
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        .about-image:before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 100%;
+            height: 100%;
+            border: 3px solid var(--secondary);
+            border-radius: 10px;
+            z-index: -1;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Services Section */
+        .services {
+            background: var(--light);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-icon {
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: var(--primary);
+            background: rgba(13, 71, 161, 0.05);
+        }
+
+        .service-content {
+            padding: 1.5rem;
+        }
+
+        .service-content h3 {
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+
+        .service-content ul {
+            list-style: none;
+            padding-left: 0;
+            margin: 1.5rem 0;
+        }
+
+        .service-content ul li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .service-content ul li:before {
+            content: '\f00c';
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            color: var(--success);
+        }
+
+        /* Leadership Section */
+        .leader {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+            background: white;
+            border-radius: 10px;
+            padding: 3rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .leader-image {
+            flex: 0 0 250px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .leader-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .leader-info h3 {
+            color: var(--secondary);
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .leader-info .position {
+            font-size: 1.1rem;
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--light);
+            color: var(--primary);
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: var(--secondary);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        /* Why Choose Us */
+        .why-us {
+            background: linear-gradient(to right, var(--primary), #1565c0);
+            color: white;
+        }
+
+        .why-us h2 {
+            color: white;
+        }
+
+        .why-us h2:after {
+            background: var(--accent);
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 10px;
+            padding: 2rem;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .feature:hover {
+            transform: translateY(-10px);
+        }
+
+        .feature i {
+            font-size: 3rem;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+        }
+
+        .feature h3 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: white;
+        }
+
+        .contact-container {
+            display: flex;
+            gap: 3rem;
+        }
+
+        .contact-info {
+            flex: 1;
+        }
+
+        .contact-info h3 {
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-item i {
+            font-size: 1.5rem;
+            color: var(--secondary);
+            margin-right: 1rem;
+            min-width: 30px;
+        }
+
+        .contact-form {
+            flex: 1;
+            background: var(--light);
+            padding: 2.5rem;
+            border-radius: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(13, 71, 161, 0.1);
+        }
+
+        .form-group textarea {
+            height: 150px;
+            resize: vertical;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-logo {
+            font-size: 2rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .footer-logo span {
+            color: var(--accent);
+        }
+
+        .footer-about p {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .footer-links h4 {
+            color: white;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+
+        .footer-contact h4 {
+            color: white;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-contact p {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .footer-contact i {
+            margin-right: 10px;
+            color: var(--accent);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            h1 {
+                font-size: 2.8rem;
+            }
+            
+            h2 {
+                font-size: 2rem;
+            }
+            
+            .about-content,
+            .contact-container {
+                flex-direction: column;
+            }
+            
+            .leader {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .leader-image {
+                margin-bottom: 1.5rem;
+            }
+            
+            .social-links {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                right: -100%;
+                flex-direction: column;
+                background: white;
+                width: 100%;
+                height: calc(100vh - 80px);
+                padding: 2rem;
+                transition: right 0.4s ease;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            }
+            
+            .nav-links.active {
+                right: 0;
+            }
+            
+            .nav-links li {
+                margin: 1.5rem 0;
+            }
+            
+            .mobile-menu {
+                display: block;
+            }
+            
+            .hero-btns {
+                flex-direction: column;
+            }
+            
+            .stats-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            section {
+                padding: 3rem 0;
+            }
+            
+            .container {
+                padding: 0 1.5rem;
+            }
+            
+            .hero {
+                padding: 8rem 0 5rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .leader {
+                padding: 1.5rem;
+            }
+            
+            .contact-form {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="container header-container">
+            <a href="#" class="logo">
+                <i class="fas fa-cube"></i>CK <span>Brands</span>
+            </a>
+            <div class="mobile-menu" id="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#leadership">Leadership</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Your Brand. Your Tech. Our Passion.</h1>
+                <p>CK Brands offers cutting-edge Website Design & Development and reliable Mobile Phone Repair Services in Zambia. Empowering businesses with digital solutions and keeping your technology in top shape.</p>
+                <div class="hero-btns">
+                    <a href="#services" class="btn">Our Services</a>
+                    <a href="#contact" class="btn btn-outline">Get In Touch</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="container stats-container">
+  <div class="stat-item">
+                <h3>200+</h3>
+                <p>Clients Served</p>
+            </div>
+            <div class="stat-item">
+                <h3>150+</h3>
+                <p>Websites Created</p>
+            </div>
+            <div class="stat-item">
+                <h3>500+</h3>
+                <p>Devices Repaired</p>
+            </div>
+            <div class="stat-item">
+                <h3>100%</h3>
+                <p>Satisfaction Guarantee</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>Company Overview</h2>
+                    <p>CK Brands is a Zambian-based company offering cutting-edge Website Design & Development and reliable Mobile Phone Repair Services. Founded by Chola Kachamba, a passionate and self-taught tech expert, CK Brands aims to empower small businesses and individuals by delivering affordable, professional digital solutions.</p>
+                    <p>Our goal is simple: <strong>Make your business visible and your devices functional.</strong></p>
+                    
+                    <div class="vision-mission" style="margin-top: 2rem;">
+                        <h3>Our Vision</h3>
+                        <p>To be Zambia’s most trusted digital solutions and mobile repair provider, helping businesses grow online while keeping their technology in top shape.</p>
+                        
+                        <h3>Our Mission</h3>
+                        <ul>
+                            <li>Deliver professional, affordable websites tailored to client goals</li>
+                            <li>Provide fast, dependable mobile phone repairs</li>
+                            <li>Support local businesses with branding and digital transformation</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <img src="data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='400' viewBox='0 0 600 400'%3E%3Crect fill='%23f0f0f0' width='600' height='400'/%3E%3Ccircle fill='%23e65100' cx='300' cy='150' r='60'/%3E%3Crect fill='%230d47a1' x='200' y='250' width='200' height='100' rx='10'/%3E%3Ctext fill='%23ffffff' font-family='Arial' font-size='20' x='300' y='300' text-anchor='middle'%3ECK Brands%3C/text%3E%3C/svg%3E" alt="CK Brands Team">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="text-center">
+                <h2>Our Services</h2>
+                <p>Comprehensive solutions to meet your digital and technology needs</p>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Website Design & Development</h3>
+                        <p>Custom-designed websites for businesses, blogs, portfolios, and NGOs</p>
+                        <ul>
+                            <li>Mobile-friendly, SEO-ready websites</li>
+                            <li>Optimized for all devices</li>
+                            <li>Affordable packages for startups</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>E-Commerce Websites</h3>
+                        <p>Complete online store solutions with all essential features</p>
+                        <ul>
+                            <li>Payment gateway integration</li>
+                            <li>Easy-to-manage back-end systems</li>
+                            <li>Sales analytics & marketing tools</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Mobile Phone Repairs</h3>
+                        <p>Expert repair services for all major brands and models</p>
+                        <ul>
+                            <li>Android and iPhone repairs</li>
+                            <li>Screen, battery, charging port replacements</li>
+                            <li>Diagnostics and software updates</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Graphic & Brand Design</h3>
+                        <p>Professional design services to build your brand identity</p>
+                        <ul>
+                            <li>Business logos and branding</li>
+                            <li>Flyers, posters, and marketing materials</li>
+                            <li>Visual identity development</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Leadership Section -->
+    <section class="about leadership" id="leadership">
+        <div class="container">
+            <div class="text-center">
+                <h2>Our Leadership</h2>
+                <p>Meet the visionary behind CK Brands</p>
+            </div>
+            
+            <div class="leader">
+                <div class="leader-image">
+                    <img src="data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300' viewBox='0 0 300 300'%3E%3Crect fill='%23f0f0f0' width='300' height='300'/%3E%3Ccircle fill='%230d47a1' cx='150' cy='120' r='60'/%3E%3Crect fill='%230d47a1' x='90' y='200' width='120' height='80' rx='10'/%3E%3C/svg%3E" alt="Chola Kachamba">
+                </div>
+                <div class="leader-info">
+                    <h3>Chola Kachamba</h3>
+                    <span class="position">CEO & Founder</span>
+                    <p>A self-taught website developer and repair technician with a deep commitment to helping clients navigate the digital world. Chola has served multiple satisfied clients in Lusaka and beyond.</p>
+                    <p>With a passion for technology and a drive to empower Zambian businesses, Chola founded CK Brands to provide accessible and professional digital solutions to local entrepreneurs and individuals.</p>
+                    
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="why-us">
+        <div class="container">
+            <div class="text-center">
+                <h2>Why Choose CK Brands?</h2>
+                <p>We're committed to delivering exceptional value and service</p>
+            </div>
+            
+            <div class="features">
+                <div class="feature">
+                    <i class="fas fa-tag"></i>
+                    <h3>Affordable & Transparent Pricing</h3>
+                    <p>Quality services with no hidden costs, tailored to your budget</p>
+                </div>
+                
+                <div class="feature">
+                    <i class="fas fa-bolt"></i>
+                    <h3>Quick Turnaround Times</h3>
+                    <p>Efficient services without compromising on quality</p>
+                </div>
+                
+                <div class="feature">
+                    <i class="fas fa-thumbs-up"></i>
+                    <h3>100% Satisfaction Guarantee</h3>
+                    <p>We stand behind our work with a satisfaction guarantee</p>
+                </div>
+                
+                <div class="feature">
+                    <i class="fas fa-cogs"></i>
+                    <h3>Tailored Solutions</h3>
+                    <p>Customized services to meet your specific requirements</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="text-center">
+                <h2>Contact Us</h2>
+                <p>Get in touch to discuss your project or repair needs</p>
+            </div>
+            
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Get In Touch</h3>
+                    <p>We're here to answer any questions you may have about our services. Reach out to us and we'll respond as soon as we can.</p>
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Location</h4>
+                            <p>Based in Lusaka, Zambia — serving clients nationwide (remote and in-person)</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>Email</h4>
+                            <p>cholakachamba.dev@gmail.com</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <div>
+                            <h4>Phone / WhatsApp</h4>
+                            <p>+260 963 414 738</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <i class="fab fa-facebook"></i>
+                        <div>
+                            <h4>Facebook</h4>
+                            <p>CK Brands Zambia</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <h3>Send a Message</h3>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="service">Service Interested In</label>
+                            <select id="service" class="form-group input">
+                                <option value="">Select a service</option>
+                                <option value="web">Website Design & Development</option>
+                                <option value="ecommerce">E-Commerce Website</option>
+                                <option value="repair">Mobile Phone Repair</option>
+                                <option value="design">Graphic & Brand Design</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <div class="footer-logo">CK <span>Brands</span></div>
+                    <p>Empowering Zambian businesses with professional digital solutions and reliable mobile repair services. Your brand and technology are our passion.</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#leadership">Leadership</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Our Services</h4>
+                    <ul>
+                        <li><a href="#">Website Design & Development</a></li>
+                        <li><a href="#">E-Commerce Solutions</a></li>
+                        <li><a href="#">Mobile Phone Repair</a></li>
+                        <li><a href="#">Graphic & Brand Design</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-contact">
+                    <h4>Contact Info</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> Lusaka, Zambia</p>
+                    <p><i class="fas fa-envelope"></i> cholakachamba.dev@gmail.com</p>
+                    <p><i class="fas fa-phone-alt"></i> +260 963 414 738</p>
+                    <p><i class="fab fa-facebook"></i> CK Brands Zambia</p>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 CK Brands. All Rights Reserved. Proudly Zambian.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navLinks = document.getElementById('nav-links');
+        
+        mobileMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenu.querySelector('i').classList.toggle('fa-bars');
+            mobileMenu.querySelector('i').classList.toggle('fa-times');
+        });
+        
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                mobileMenu.querySelector('i').classList.add('fa-bars');
+                mobileMenu.querySelector('i').classList.remove('fa-times');
+            });
+        });
+        
+        // Sticky Header
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Form Submission
+        const contactForm = document.getElementById('contactForm');
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // In a real implementation, you would send the form data to a server
+            // For this demo, we'll just show an alert
+            alert('Thank you for your message! We will get back to you soon.');
+            contactForm.reset();
+        });
+        
+        // Animation on Scroll
+        const animateOnScroll = () => {
+            const elements = document.querySelectorAll('.service-card, .feature, .stat-item');
+            
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.3;
+                
+                if (elementPosition < screenPosition) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        };
+        
+        // Set initial state for animated elements
+        document.querySelectorAll('.service-card, .feature, .stat-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        });
+        
+        window.addEventListener('scroll', animateOnScroll);
+        // Trigger once on load
+        window.addEventListener('load', animateOnScroll);
+    </script>
+</body>
+  </html>
